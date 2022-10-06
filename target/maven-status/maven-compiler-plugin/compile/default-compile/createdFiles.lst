@@ -3,6 +3,7 @@ edu/au/cpsc/homework/entity/Client.class
 edu/au/cpsc/homework/App.class
 edu/au/cpsc/homework/repository/spring/SpringDataClientCrudRepository.class
 edu/au/cpsc/homework/entity/Entity.class
+edu/au/cpsc/homework/entity/SampleDataGenerator.class
 edu/au/cpsc/homework/entity/ContractTemplate.class
 edu/au/cpsc/homework/repository/Repository.class
 edu/au/cpsc/homework/repository/spring/SpringDataClientRepository.class

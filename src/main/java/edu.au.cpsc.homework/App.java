@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Main driver class.
@@ -31,6 +32,7 @@ public class App {
    * @return CommandLineRunner bean
    */
   @Bean
+  @Profile("production")
   public CommandLineRunner generateSampleData(ClientRepository clientRepository) {
     return (args) -> {
       List<Client> repoAsList = new ArrayList<>();
