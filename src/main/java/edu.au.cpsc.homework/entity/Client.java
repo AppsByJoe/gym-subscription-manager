@@ -111,4 +111,19 @@ public class Client extends Entity {
   public Contract getLatestContract() {
     return contracts.get(contracts.size() - 1);
   }
+
+  /**
+   * Takes as input the contract template enumerated type.  This method assumes the client has
+   * already been verified as eligible to receive a contract of type contractTemplate. This method
+   * deactivates the currently active contract of the client, if applicable.
+   *
+   * @param contractTemplate The enumerated type denoting a type of contract to instantiate.
+   */
+  public void debugAddEligibleContractToClient(ContractTemplate contractTemplate) {
+    if (this.isCurrentlyMember()) {
+      contracts.get(contracts.size() - 1).deactivate();
+    }
+    Contract contract = new Contract(contractTemplate);
+    contracts.add(contract);
+  }
 }

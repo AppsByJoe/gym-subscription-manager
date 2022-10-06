@@ -36,7 +36,7 @@ public class ManageClients {
 
   /**
    * Takes as input a client object and contract template enumerated type.  This method assumes the
-   * client has already been verified as eligible to recieve a contract of type contractTemplate.
+   * client has already been verified as eligible to receive a contract of type contractTemplate.
    * This method deactivates the currently active contract of the client, if applicable.
    *
    * @param client           The client object to receive a new contract.
