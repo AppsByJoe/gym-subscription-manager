@@ -1,0 +1,5 @@
+edu/au/cpsc/homework/tests/usecase/ManageClientsTest.class
+edu/au/cpsc/homework/tests/entity/ContractTest.class
+edu/au/cpsc/homework/tests/repository/ClientRepositoryTest.class
+edu/au/cpsc/homework/tests/repository/SpringDataClientRepositoryTest.class
+edu/au/cpsc/homework/tests/entity/ClientTest.class
