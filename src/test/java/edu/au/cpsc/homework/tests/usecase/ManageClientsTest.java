@@ -6,14 +6,17 @@ package edu.au.cpsc.homework.tests.usecase;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.au.cpsc.homework.entity.Client;
 import edu.au.cpsc.homework.entity.ContractTemplate;
+import edu.au.cpsc.homework.entity.SampleDataGenerator;
 import edu.au.cpsc.homework.repository.ClientRepository;
 import edu.au.cpsc.homework.usecase.ManageClients;
 import java.time.LocalDate;
 import java.util.List;
 import javax.transaction.Transactional;
+import javax.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Profile;
@@ -93,5 +96,14 @@ public abstract class ManageClientsTest {
     var list = useCase.getEligibleTemplates(client);
 
     assertEquals(3, list.size());
+  }
+
+  @Test
+  public void when_called_generate_adds_sample_data_to_repository() {
+    int oldSize = clientRepository.findAll().size();
+    SampleDataGenerator.generate(clientRepository);
+    int newSize = clientRepository.findAll().size();
+
+    assertTrue(oldSize < newSize);
   }
 }
