@@ -20,7 +20,7 @@ import org.springframework.test.context.event.annotation.BeforeTestClass;
 
 // annotations test bean outside normal test profile
 @SpringBootTest
-@Transactional
+//@Transactional
 @ActiveProfiles("production")
 public class AppTest {
 
@@ -41,8 +41,11 @@ public class AppTest {
   @BeforeEach
   public void setUp() throws Exception {
     createRepository();
+    clientRepository.findAll().removeAll(clientRepository.findAll());
+
+    useCase = new ManageClients(clientRepository);
     for (Client c : clientRepository.findAll()) {
-      clientRepository.findAll().remove(c);
+      System.out.println(c.getName());
     }
   }
 
