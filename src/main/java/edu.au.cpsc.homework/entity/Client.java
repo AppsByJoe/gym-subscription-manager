@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,7 +23,7 @@ public class Client extends Entity {
   @NotBlank
   private String name;
   private String email;
-  @NotNull
+
   private LocalDate dateOfBirth;
   @NotBlank
   private String street;
@@ -33,7 +34,7 @@ public class Client extends Entity {
   @NotNull
   private int zip;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private List<Contract> contracts;
 
   public Client() {

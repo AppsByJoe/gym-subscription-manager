@@ -23,31 +23,31 @@ import org.springframework.test.context.event.annotation.BeforeTestClass;
 //@Transactional
 @ActiveProfiles("production")
 public class AppTest {
-
-
-  protected ClientRepository clientRepository;
-
-  protected ManageClients useCase;
-  private SpringDataClientRepository springDataClientRepository;
-
-  @Autowired
-  public void setSpringDataClientRepository(SpringDataClientRepository springDataClientRepository) {
-    this.springDataClientRepository = springDataClientRepository;
-  }
-  public void createRepository() {
-    clientRepository = springDataClientRepository;
-  }
-
-  @BeforeEach
-  public void setUp() throws Exception {
-    createRepository();
-    clientRepository.findAll().removeAll(clientRepository.findAll());
-
-    useCase = new ManageClients(clientRepository);
-    for (Client c : clientRepository.findAll()) {
-      System.out.println(c.getName());
-    }
-  }
+//
+//
+//  protected ClientRepository clientRepository;
+//
+//  protected ManageClients useCase;
+//  private SpringDataClientRepository springDataClientRepository;
+//
+//  @Autowired
+//  public void setSpringDataClientRepository(SpringDataClientRepository springDataClientRepository) {
+//    this.springDataClientRepository = springDataClientRepository;
+//  }
+//  public void createRepository() {
+//    clientRepository = springDataClientRepository;
+//  }
+//
+//  @BeforeEach
+//  public void setUp() throws Exception {
+//    createRepository();
+//    clientRepository.findAll().removeAll(clientRepository.findAll());
+//
+//    useCase = new ManageClients(clientRepository);
+//    for (Client c : clientRepository.findAll()) {
+//      System.out.println(c.getName());
+//    }
+//  }
 
   @Test
   public void when_100_percent_code_coverage_needed_test_spring_boot_app_loads() {

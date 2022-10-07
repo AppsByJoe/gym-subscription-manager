@@ -12,11 +12,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 /**
  * The use case which governs adding, editing, and viewing clients.  Also governs the use case of
  * selecting from contract templates available to a client and assigning them to that client.
  */
+@Component
 public class ManageClients {
 
   private final ClientRepository clientRepository;
@@ -67,5 +69,9 @@ public class ManageClients {
       templateList.remove(ContractTemplate.STUDENT);
     }
     return templateList;
+  }
+
+  public void saveClient(Client c) {
+    clientRepository.save(c);
   }
 }

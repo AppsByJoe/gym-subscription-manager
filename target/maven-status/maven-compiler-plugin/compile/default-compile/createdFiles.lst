@@ -1,11 +1,14 @@
+edu/au/cpsc/homework/vaadin/ContractsView.class
 edu/au/cpsc/homework/usecase/ManageClients.class
 edu/au/cpsc/homework/entity/Client.class
+edu/au/cpsc/homework/vaadin/MainView.class
+edu/au/cpsc/homework/vaadin/ClientsView.class
+edu/au/cpsc/homework/entity/ContractTemplate.class
+edu/au/cpsc/homework/repository/Repository.class
+edu/au/cpsc/homework/entity/Contract.class
 edu/au/cpsc/homework/App.class
 edu/au/cpsc/homework/repository/spring/SpringDataClientCrudRepository.class
 edu/au/cpsc/homework/entity/Entity.class
 edu/au/cpsc/homework/entity/SampleDataGenerator.class
-edu/au/cpsc/homework/entity/ContractTemplate.class
-edu/au/cpsc/homework/repository/Repository.class
 edu/au/cpsc/homework/repository/spring/SpringDataClientRepository.class
 edu/au/cpsc/homework/repository/ClientRepository.class
-edu/au/cpsc/homework/entity/Contract.class
