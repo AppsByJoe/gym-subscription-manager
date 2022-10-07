@@ -16,10 +16,8 @@ import edu.au.cpsc.homework.usecase.ManageClients;
 import java.time.LocalDate;
 import java.util.List;
 import javax.transaction.Transactional;
-import javax.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.annotation.Profile;
 
 @Transactional
 public abstract class ManageClientsTest {
@@ -105,5 +103,15 @@ public abstract class ManageClientsTest {
     int newSize = clientRepository.findAll().size();
 
     assertTrue(oldSize < newSize);
+  }
+
+  @Test
+  public void when_saved_client_can_be_retrieved() {
+    Client client = new Client();
+    setDefaultClientValues(client);
+    String oldName = client.getName();
+
+    useCase.saveClient(client);
+    assertEquals(oldName, client.getName());
   }
 }
