@@ -31,13 +31,13 @@ public class ClientsView extends VerticalLayout {
 
   private final Grid<Client> grid;
   private final ManageClients manageClients;
-  TextField nameField = new TextField("Name");
-  TextField emailField = new TextField("Email");
-  DatePicker dobField = new DatePicker("Date of Birth");
-  TextArea streetField = new TextArea("Street");
-  TextField cityField = new TextField("City");
-  TextField stateField = new TextField("State");
-  IntegerField zipField = new IntegerField("Zip");
+  private final TextField nameField = new TextField("Name");
+  private final TextField emailField = new TextField("Email");
+  private final DatePicker dobField = new DatePicker("Date of Birth");
+  private final TextArea streetField = new TextArea("Street");
+  private final TextField cityField = new TextField("City");
+  private final TextField stateField = new TextField("State");
+  private final IntegerField zipField = new IntegerField("Zip");
   private Client selectedClient = null;
 
   /**

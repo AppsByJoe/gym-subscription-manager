@@ -44,4 +44,12 @@ public class ContractTest {
     assertEquals(10, templatePrice);
     assertEquals("Client must never have had a contract before", templateRequirements);
   }
+
+  @Test
+  public void given_new_contract_get_name_returns_proper_name() {
+    Contract contract = new Contract(ContractTemplate.TRIAL);
+    String contractName = contract.getName();
+
+    assertEquals("Trial", contractName);
+  }
 }
