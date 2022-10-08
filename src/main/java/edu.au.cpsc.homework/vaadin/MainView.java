@@ -52,8 +52,18 @@ public class MainView extends AppLayout implements AppShellConfigurator {
         .set("margin-inline-start", "var(--lumo-space-xs)")
         .set("padding", "var(--lumo-space-xs)");
     RouterLink contractsLink = new RouterLink(ContractsView.class);
-    contractsLink.add(contractsIcon, new Span(" Assign Contracts"));
+    contractsLink.add(contractsIcon, new Span("Assign Contracts"));
     tabs.add(new Tab(contractsLink));
+
+    Icon contractsHistoryIcon = VaadinIcon.ARCHIVE.create();
+    contractsHistoryIcon.getStyle()
+        .set("box-sizing", "border-box")
+        .set("margin-inline-end", "var(--lumo-space-m)")
+        .set("margin-inline-start", "var(--lumo-space-xs)")
+        .set("padding", "var(--lumo-space-xs)");
+    RouterLink contractsHistoryLink = new RouterLink(ContractsHistoryView.class);
+    contractsHistoryLink.add(contractsHistoryIcon, new Span("View History"));
+    tabs.add(new Tab(contractsHistoryLink));
 
     tabs.setOrientation(Tabs.Orientation.VERTICAL);
     return tabs;
