@@ -86,13 +86,28 @@ public class ContractsView extends VerticalLayout {
     assignNewContractButton.addClickListener(event -> assignNewContractButtonPressed());
     verticalLayout.add(assignNewContractButton);
 
-    // need button for extra credit deactivating current contract
+    Button cancelCurrentContractButton =
+        new Button("Cancel Current Active Contract of Selected Client");
+    cancelCurrentContractButton.addClickListener(event -> cancelCurrentContractButtonPressed());
+    verticalLayout.add(cancelCurrentContractButton);
 
     Button cancelButton = new Button("Cancel Changes and Deselect Client");
     cancelButton.addClickListener(event -> cancelButtonPressed());
     verticalLayout.add(cancelButton);
 
     return verticalLayout;
+  }
+
+  private void cancelCurrentContractButtonPressed() {
+    if (selectedClient.isCurrentlyMember()) {
+      manageClients.cancelCurrentActiveContract(selectedClient);
+      manageClients.saveClient(selectedClient);
+      cancelButtonPressed();
+      updateGrid();
+      Notification.show("Current active contract successfully canceled.");
+    } else {
+      Notification.show("Selected Client does not have an active contract to cancel.");
+    }
   }
 
   private void assignNewContractButtonPressed() {

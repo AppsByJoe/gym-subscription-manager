@@ -15,15 +15,12 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
 
 /**
  * Landing page of Gym Manager browser app.  Has a nav bar and drawer toggle which expands from left
  * side of viewport.  Loads new pages in right frame.
  */
 @Route("")
-@Theme(variant = Lumo.DARK)
 public class MainView extends AppLayout implements AppShellConfigurator {
 
   /**

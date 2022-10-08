@@ -114,4 +114,15 @@ public abstract class ManageClientsTest {
     useCase.saveClient(client);
     assertEquals(oldName, client.getName());
   }
+
+  @Test
+  public void when_active_contract_deactivated_then_client_is_not_member() {
+    Client client = new Client();
+    setDefaultClientValues(client);
+    useCase.addEligibleContractToClient(client, ContractTemplate.SHORT);
+    useCase.cancelCurrentActiveContract(client);
+    useCase.saveClient(client);
+
+    assertFalse(client.isCurrentlyMember());
+  }
 }

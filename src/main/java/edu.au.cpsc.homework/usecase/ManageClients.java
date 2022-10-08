@@ -74,4 +74,15 @@ public class ManageClients {
   public void saveClient(Client c) {
     clientRepository.save(c);
   }
+
+  /**
+   * Cancels current active contract, if applicable.
+   *
+   * @param client Member whose active contract is to be deactivated
+   */
+  public void cancelCurrentActiveContract(Client client) {
+    if (client.isCurrentlyMember()) {
+      client.getLatestContract().deactivate();
+    }
+  }
 }
