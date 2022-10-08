@@ -14,6 +14,10 @@ import javax.validation.constraints.NotNull;
 @javax.persistence.Entity
 public class Contract extends Entity {
 
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
   @NotNull
   private LocalDate startDate;
   @NotNull

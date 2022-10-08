@@ -146,7 +146,7 @@ public class Client extends Entity {
 
   public String getPricingPlanInfo() {
     if (isCurrentlyMember()) {
-      return getPricingPlanInfo();
+      return getLatestContract().getPricingPlan();
     } else {
       return "";
     }

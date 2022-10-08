@@ -33,6 +33,7 @@ public class SampleDataGenerator {
     client1.debugAddEligibleContractToClient(ContractTemplate.SHORT);
     client1.debugAddEligibleContractToClient(ContractTemplate.MEDIUM);
     client1.debugAddEligibleContractToClient(ContractTemplate.LONG);
+    client1.getLatestContract().setStartDate(LocalDate.of(2021, 11, 9));
     List<Client> listOfSampleClients = new ArrayList<>();
     listOfSampleClients.add(client1);
 
@@ -62,6 +63,7 @@ public class SampleDataGenerator {
     client3.debugAddEligibleContractToClient(ContractTemplate.LONG);
     client3.debugAddEligibleContractToClient(ContractTemplate.MEDIUM);
     client3.debugAddEligibleContractToClient(ContractTemplate.MEDIUM);
+    client3.getLatestContract().setStartDate(LocalDate.of(2022, 5, 11));
     listOfSampleClients.add(client3);
 
     Client client4 = new Client();
@@ -116,6 +118,7 @@ public class SampleDataGenerator {
     client8.debugAddEligibleContractToClient(ContractTemplate.LONG);
     client8.debugAddEligibleContractToClient(ContractTemplate.MEDIUM);
     client8.debugAddEligibleContractToClient(ContractTemplate.SHORT);
+    client8.getLatestContract().setStartDate(LocalDate.of(2022, 9, 2));
     listOfSampleClients.add(client8);
 
     Client client9 = new Client();
@@ -151,6 +154,7 @@ public class SampleDataGenerator {
     client11.debugAddEligibleContractToClient(ContractTemplate.STUDENT);
     client11.debugAddEligibleContractToClient(ContractTemplate.STUDENT);
     client11.debugAddEligibleContractToClient(ContractTemplate.STUDENT);
+    client11.getLatestContract().setStartDate(LocalDate.of(2022, 7, 30));
     listOfSampleClients.add(client11);
 
     Client client12 = new Client();
@@ -172,6 +176,7 @@ public class SampleDataGenerator {
     client12.debugAddEligibleContractToClient(ContractTemplate.LONG);
     client12.debugAddEligibleContractToClient(ContractTemplate.LONG);
     client12.debugAddEligibleContractToClient(ContractTemplate.LONG);
+    client12.getLatestContract().setStartDate(LocalDate.of(2021, 11, 19));
     listOfSampleClients.add(client12);
 
     Client client13 = new Client();
@@ -187,6 +192,7 @@ public class SampleDataGenerator {
     client13.debugAddEligibleContractToClient(ContractTemplate.MEDIUM);
     client13.debugAddEligibleContractToClient(ContractTemplate.SHORT);
     client13.debugAddEligibleContractToClient(ContractTemplate.SHORT);
+    client13.getLatestContract().setStartDate(LocalDate.of(2022, 9, 26));
     listOfSampleClients.add(client13);
 
     for (Client c : listOfSampleClients) {
