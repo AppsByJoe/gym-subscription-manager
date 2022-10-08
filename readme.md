@@ -6,7 +6,7 @@ I have a few notes before we get started:
    cancel a member's currently active contract. This is used in the
    /assign_contracts vaadin page. There is a button,
    "Cancel Current Active Contract of Selected Client". Note that
-   this contract will still remain in the Client's contract history,
+   this canceled contract will still remain in the Client's contract history,
    and their eligibility for future contracts will be modified appropriately.
    <br></br>
 2. Note that the test coverage of non-vaadin files is 99%. The generateSampleData bean in App.java
