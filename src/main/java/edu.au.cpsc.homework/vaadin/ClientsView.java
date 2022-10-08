@@ -8,8 +8,8 @@ package edu.au.cpsc.homework.vaadin;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.Grid.SelectionMode;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -27,8 +27,6 @@ public class ClientsView extends VerticalLayout {
   private ManageClients manageClients;
   private final Grid<Client> grid;
   private Client selectedClient = null;
-
-  private FormLayout formLayout;
   TextField nameField = new TextField("Name");
   TextField emailField = new TextField("Email");
   DatePicker dobField = new DatePicker("Date of Birth");
@@ -50,6 +48,10 @@ public class ClientsView extends VerticalLayout {
     rolledForm.add(createToolbar(), leftSideForm, middleSideForm, rightSideForm);
     add(grid, rolledForm);
     updateGrid();
+
+    for (Column c : grid.getColumns()) {
+      c.setSortable(true);
+    }
   }
 
   private Grid<Client> createGrid() {
@@ -63,7 +65,6 @@ public class ClientsView extends VerticalLayout {
     grid.addColumn(Client::getZip).setHeader("Zip");
     grid.setSelectionMode(SelectionMode.SINGLE);
     grid.addSelectionListener(this::gridSelectionChanged);
-    //add blur event listener
     return grid;
   }
 

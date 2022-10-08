@@ -127,4 +127,28 @@ public class Client extends Entity {
     Contract contract = new Contract(contractTemplate);
     contracts.add(contract);
   }
+
+  public String getActiveContractTemplateName() {
+    if (isCurrentlyMember()) {
+      return getLatestContractTemplate().getName();
+    } else {
+      return "";
+    }
+  }
+
+  public String getActiveContractStartDate() {
+    if (isCurrentlyMember()) {
+      return getLatestContract().getStartDate().toString();
+    } else {
+      return "";
+    }
+  }
+
+  public String getPricingPlanInfo() {
+    if (isCurrentlyMember()) {
+      return getPricingPlanInfo();
+    } else {
+      return "";
+    }
+  }
 }
