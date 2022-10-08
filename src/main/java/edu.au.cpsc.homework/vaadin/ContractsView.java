@@ -10,9 +10,7 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.Grid.SelectionMode;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -39,7 +37,6 @@ public class ContractsView extends VerticalLayout {
     grid = createGrid();
     HorizontalLayout rightSideForm = new HorizontalLayout();
     rightSideForm.add(selectedUserField, potentialContractComboField);
-    // add template selection drop down
     HorizontalLayout rolledForm = new HorizontalLayout();
     rolledForm.add(createToolbar(), rightSideForm);
     add(grid, rolledForm);
@@ -77,15 +74,30 @@ public class ContractsView extends VerticalLayout {
   private Component createToolbar() {
     VerticalLayout verticalLayout = new VerticalLayout();
 
-    // need button for assigning new contract
+    Button assignNewContractButton = new Button("Assign Selected Contract to Client");
+    assignNewContractButton.addClickListener(event -> assignNewContractButtonPressed());
+    verticalLayout.add(assignNewContractButton);
+
     // need button for extra credit deactivating current contract
 
 
-    Button cancelButton = new Button("Cancel changes and deselect Client");
+    Button cancelButton = new Button("Cancel Changes and Deselect Client");
     cancelButton.addClickListener(event -> cancelButtonPressed());
     verticalLayout.add(cancelButton);
 
     return verticalLayout;
+  }
+
+  private void assignNewContractButtonPressed() {
+    if (manageClients.getEligibleTemplates(selectedClient).contains(potentialContractComboField.getValue())) {
+      manageClients.addEligibleContractToClient(selectedClient, potentialContractComboField.getValue());
+      manageClients.saveClient(selectedClient);
+      cancelButtonPressed();
+      updateGrid();
+      Notification.show("Assignment successful.");
+    } else {
+      Notification.show("Assignment failed.  Client is not eligible for selected contract.");
+    }
   }
 
   private void updateGrid() {
@@ -95,7 +107,6 @@ public class ContractsView extends VerticalLayout {
   private void cancelButtonPressed() {
     selectedUserField.clear();
     potentialContractComboField.clear();
-    // clear new contract field
     selectedClient = null;
   }
 }
