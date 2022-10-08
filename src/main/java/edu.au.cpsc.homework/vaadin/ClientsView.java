@@ -23,11 +23,14 @@ import edu.au.cpsc.homework.entity.Client;
 import edu.au.cpsc.homework.usecase.ManageClients;
 import java.util.Optional;
 
+/**
+ * Displayed in right frame of Gym Manager browser app.  Fulfills the Manage Clients use case.
+ */
 @Route(value = "/manage_clients", layout = MainView.class)
 public class ClientsView extends VerticalLayout {
-  private ManageClients manageClients;
+
   private final Grid<Client> grid;
-  private Client selectedClient = null;
+  private final ManageClients manageClients;
   TextField nameField = new TextField("Name");
   TextField emailField = new TextField("Email");
   DatePicker dobField = new DatePicker("Date of Birth");
@@ -35,7 +38,13 @@ public class ClientsView extends VerticalLayout {
   TextField cityField = new TextField("City");
   TextField stateField = new TextField("State");
   IntegerField zipField = new IntegerField("Zip");
+  private Client selectedClient = null;
 
+  /**
+   * Constructor which instantiates and organizes the elements of the /manage_clients url.
+   *
+   * @param manageClients The use case object used by this view.
+   */
   public ClientsView(ManageClients manageClients) {
     this.manageClients = manageClients;
     grid = createGrid();
@@ -50,7 +59,7 @@ public class ClientsView extends VerticalLayout {
     add(grid, rolledForm);
     updateGrid();
 
-    for (Column c : grid.getColumns()) {
+    for (Column<?> c : grid.getColumns()) {
       c.setSortable(true);
     }
   }
@@ -100,7 +109,7 @@ public class ClientsView extends VerticalLayout {
     Button cancelButton = new Button("Cancel Changes and Clear Form");
     cancelButton.addClickListener(event -> cancelButtonPressed());
     verticalLayout.add(cancelButton);
-    
+
     return verticalLayout;
   }
 

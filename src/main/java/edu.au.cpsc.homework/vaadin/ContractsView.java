@@ -21,28 +21,36 @@ import edu.au.cpsc.homework.entity.ContractTemplate;
 import edu.au.cpsc.homework.usecase.ManageClients;
 import java.util.Optional;
 
+/**
+ * Displayed in right frame of Gym Manager browser app.  Fulfills the Assign Contracts use case.
+ */
 @Route(value = "/assign_contracts", layout = MainView.class)
 public class ContractsView extends VerticalLayout {
-  private ManageClients manageClients;
-  private final Grid<Client> grid;
 
+  private final ManageClients manageClients;
+  private final Grid<Client> grid;
+  private final TextField selectedUserField = new TextField("Selected Client Name");
+  private final ComboBox<ContractTemplate> selectedContractField =
+      new ComboBox<>("Select Contract Type");
   private Client selectedClient = null;
 
-  private TextField selectedUserField = new TextField("Selected Client Name");
-  private ComboBox<ContractTemplate> potentialContractComboField = new ComboBox<>("Select Contract Type");
-
+  /**
+   * Constructor which instantiates and organizes the elements of the /assign_contracts url.
+   *
+   * @param manageClients The use case object used by this view.
+   */
   public ContractsView(ManageClients manageClients) {
     this.manageClients = manageClients;
     selectedUserField.setReadOnly(true);
     grid = createGrid();
     HorizontalLayout rightSideForm = new HorizontalLayout();
-    rightSideForm.add(selectedUserField, potentialContractComboField);
+    rightSideForm.add(selectedUserField, selectedContractField);
     HorizontalLayout rolledForm = new HorizontalLayout();
     rolledForm.add(createToolbar(), rightSideForm);
     add(grid, rolledForm);
     updateGrid();
 
-    for (Column c : grid.getColumns()) {
+    for (Column<?> c : grid.getColumns()) {
       c.setSortable(true);
     }
   }
@@ -67,8 +75,8 @@ public class ContractsView extends VerticalLayout {
     }
     selectedClient = client;
     selectedUserField.setValue(client.getName());
-    potentialContractComboField.setItems(manageClients.getEligibleTemplates(client));
-    potentialContractComboField.setItemLabelGenerator(ContractTemplate::getName);
+    selectedContractField.setItems(manageClients.getEligibleTemplates(client));
+    selectedContractField.setItemLabelGenerator(ContractTemplate::getName);
   }
 
   private Component createToolbar() {
@@ -80,7 +88,6 @@ public class ContractsView extends VerticalLayout {
 
     // need button for extra credit deactivating current contract
 
-
     Button cancelButton = new Button("Cancel Changes and Deselect Client");
     cancelButton.addClickListener(event -> cancelButtonPressed());
     verticalLayout.add(cancelButton);
@@ -89,8 +96,9 @@ public class ContractsView extends VerticalLayout {
   }
 
   private void assignNewContractButtonPressed() {
-    if (manageClients.getEligibleTemplates(selectedClient).contains(potentialContractComboField.getValue())) {
-      manageClients.addEligibleContractToClient(selectedClient, potentialContractComboField.getValue());
+    if (manageClients.getEligibleTemplates(selectedClient).contains(selectedContractField
+        .getValue())) {
+      manageClients.addEligibleContractToClient(selectedClient, selectedContractField.getValue());
       manageClients.saveClient(selectedClient);
       cancelButtonPressed();
       updateGrid();
@@ -106,7 +114,7 @@ public class ContractsView extends VerticalLayout {
 
   private void cancelButtonPressed() {
     selectedUserField.clear();
-    potentialContractComboField.clear();
+    selectedContractField.clear();
     selectedClient = null;
   }
 }

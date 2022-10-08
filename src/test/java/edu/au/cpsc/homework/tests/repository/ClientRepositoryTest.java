@@ -15,7 +15,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.annotation.Profile;
 
 @Transactional
 public abstract class ClientRepositoryTest {

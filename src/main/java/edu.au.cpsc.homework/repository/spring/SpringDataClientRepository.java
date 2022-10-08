@@ -10,8 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Interface used to update repositories for use with Spring in conjunction with
+ * SpringDataClientCrudRepository interface.
+ */
 @Repository
 public class SpringDataClientRepository implements ClientRepository {
+
   private final SpringDataClientCrudRepository springDataClientCrudRepository;
 
   public SpringDataClientRepository(SpringDataClientCrudRepository springDataClientCrudRepository) {

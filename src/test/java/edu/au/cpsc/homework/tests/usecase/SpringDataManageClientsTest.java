@@ -9,18 +9,19 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Profile;
 
 @DataJpaTest
 @Transactional
 @ComponentScan("edu.au.cpsc.homework")
 public class SpringDataManageClientsTest extends ManageClientsTest {
+
   private SpringDataClientRepository springDataClientRepository;
 
   @Autowired
   public void setSpringDataClientRepository(SpringDataClientRepository springDataClientRepository) {
     this.springDataClientRepository = springDataClientRepository;
   }
+
   @Override
   public void createRepository() {
     clientRepository = springDataClientRepository;

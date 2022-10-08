@@ -128,6 +128,12 @@ public class Client extends Entity {
     contracts.add(contract);
   }
 
+  /**
+   * Returns string value of active contract template name if client is member, else empty string.
+   * Used for vaadin grid data population.
+   *
+   * @return String value of template name if client is member
+   */
   public String getActiveContractTemplateName() {
     if (isCurrentlyMember()) {
       return getLatestContractTemplate().getName();
@@ -136,6 +142,12 @@ public class Client extends Entity {
     }
   }
 
+  /**
+   * Returns string value of active contract start date if client is member, else empty string. Used
+   * for vaadin grid data population.
+   *
+   * @return String value of start date if client is member
+   */
   public String getActiveContractStartDate() {
     if (isCurrentlyMember()) {
       return getLatestContract().getStartDate().toString();
@@ -144,6 +156,12 @@ public class Client extends Entity {
     }
   }
 
+  /**
+   * Returns string value of active contract pricing plan if client is member, else empty string.
+   * Used for vaadin grid data population.
+   *
+   * @return String value of pricing plan if client is member
+   */
   public String getPricingPlanInfo() {
     if (isCurrentlyMember()) {
       return getLatestContract().getPricingPlan();
