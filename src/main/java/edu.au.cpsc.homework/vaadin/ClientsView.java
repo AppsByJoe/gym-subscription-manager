@@ -15,6 +15,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
+import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.selection.SelectionEvent;
 import com.vaadin.flow.router.Route;
@@ -30,7 +31,7 @@ public class ClientsView extends VerticalLayout {
   TextField nameField = new TextField("Name");
   TextField emailField = new TextField("Email");
   DatePicker dobField = new DatePicker("Date of Birth");
-  TextField streetField = new TextField("Street");
+  TextArea streetField = new TextArea("Street");
   TextField cityField = new TextField("City");
   TextField stateField = new TextField("State");
   IntegerField zipField = new IntegerField("Zip");

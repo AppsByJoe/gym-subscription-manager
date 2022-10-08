@@ -6,14 +6,20 @@ package edu.au.cpsc.homework.vaadin;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.Grid.SelectionMode;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.selection.SelectionEvent;
 import com.vaadin.flow.router.Route;
 import edu.au.cpsc.homework.entity.Client;
+import edu.au.cpsc.homework.entity.ContractTemplate;
 import edu.au.cpsc.homework.usecase.ManageClients;
 import java.util.Optional;
 
@@ -24,13 +30,18 @@ public class ContractsView extends VerticalLayout {
 
   private Client selectedClient = null;
 
+  private TextField selectedUserField = new TextField("Selected Client Name");
+  private ComboBox<ContractTemplate> potentialContractComboField = new ComboBox<>("Select Contract Type");
+
   public ContractsView(ManageClients manageClients) {
     this.manageClients = manageClients;
+    selectedUserField.setReadOnly(true);
     grid = createGrid();
-    VerticalLayout leftSideForm = new VerticalLayout();
-    VerticalLayout rightSideForm = new VerticalLayout();
+    HorizontalLayout rightSideForm = new HorizontalLayout();
+    rightSideForm.add(selectedUserField, potentialContractComboField);
+    // add template selection drop down
     HorizontalLayout rolledForm = new HorizontalLayout();
-    rolledForm.add(createToolbar(), leftSideForm, rightSideForm);
+    rolledForm.add(createToolbar(), rightSideForm);
     add(grid, rolledForm);
     updateGrid();
 
@@ -57,10 +68,10 @@ public class ContractsView extends VerticalLayout {
     if (client == null) {
       return;
     }
-
-//    nameField.setValue(client.getName());
-
     selectedClient = client;
+    selectedUserField.setValue(client.getName());
+    potentialContractComboField.setItems(manageClients.getEligibleTemplates(client));
+    potentialContractComboField.setItemLabelGenerator(ContractTemplate::getName);
   }
 
   private Component createToolbar() {
@@ -70,7 +81,7 @@ public class ContractsView extends VerticalLayout {
     // need button for extra credit deactivating current contract
 
 
-    Button cancelButton = new Button("Cancel changes and clear current selected Client");
+    Button cancelButton = new Button("Cancel changes and deselect Client");
     cancelButton.addClickListener(event -> cancelButtonPressed());
     verticalLayout.add(cancelButton);
 
@@ -82,7 +93,8 @@ public class ContractsView extends VerticalLayout {
   }
 
   private void cancelButtonPressed() {
-    // clear selected client display field
+    selectedUserField.clear();
+    potentialContractComboField.clear();
     // clear new contract field
     selectedClient = null;
   }
