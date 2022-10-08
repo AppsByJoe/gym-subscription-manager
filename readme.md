@@ -9,7 +9,8 @@ I have a few notes before we get started:
    this contract will still remain in the Client's contract history,
    and their eligibility for future contracts will be modified appropriately.
    <br></br>
-2. Note that the test coverage of generateSampleData bean in App.java will not cover
+2. Note that the test coverage of non-vaadin files is 99%. The generateSampleData bean in App.java
+   will not cover
    the entire method if tables are already populated. Tests will have
    to be run both when the database is empty and when
    the database has already been populated to cover the entire method.
