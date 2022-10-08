@@ -5,6 +5,7 @@ edu/au/cpsc/homework/vaadin/MainView.class
 edu/au/cpsc/homework/vaadin/ClientsView.class
 edu/au/cpsc/homework/entity/ContractTemplate.class
 edu/au/cpsc/homework/repository/Repository.class
+edu/au/cpsc/homework/vaadin/ContractsHistoryView.class
 edu/au/cpsc/homework/entity/Contract.class
 edu/au/cpsc/homework/App.class
 edu/au/cpsc/homework/repository/spring/SpringDataClientCrudRepository.class
