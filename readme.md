@@ -1,30 +1,36 @@
-Hi!  Thanks for grading my project!\
-I have a few notes before we get started:
+# Gym Subscription Manager
 ***
+### Summary
+This project is designed to be used by a gym owner to track members or guests who use the gym.
+Membership status, contract type, and history can be edited through the browser user interface.
+***
+### Dependencies
+MAC:
+1. Download Derby 10.6.1 [HERE](https://db.apache.org/derby/releases/release-10.6.1.0.html)
+2. Extract to */opt/Apache/*
+3. Run in terminal: `export DERBY_INSTALL=/opt/Apache/db-derby-10.16.1.1-bin`
+4. Run in terminal: `export CLASSPATH=$DERBY_INSTALL/lib/derby.jar:$DERBY_INSTALL/lib/derbytools.jar:$DERBY_INSTALL/lib/derbyoptionaltools.jar:$DERBY_INSTALL/lib/derbyshared.jar:.`
 
-1. _**For extra credit**_, I created a new view which can be reached
-   from the drawer on the left hand side of the viewport.  "View History"
-   implements a new use case to view the entire contract history of any
-   client in the database. To operate, first select the name of a client
-   from the left-hand side combo-box. Then, the grid on the right-hand
-   side will be populated with all the client's contract data.
-   <br></br>
-2. _**For extra credit**_, I implemented a simple use case method to
-   cancel a member's currently active contract. This is used in the
-   /assign_contracts vaadin page. Click the button,
-   "Cancel Current Active Contract of Selected Client". This canceled
-   contract will still remain in the Client's contract history.
-   <br></br>
-3. Note that the test coverage of non-vaadin files is 99%. The generateSampleData bean in App.java
-   will not cover
-   the entire method if tables are already populated. Tests will have
-   to be run both when the database is empty and when
-   the database has already been populated to cover the entire method.
-   I understand if this loses points. I was unable to test for this
-   interaction simultaneously since I couldn't solve how to empty a
-   database before running the program in a unit test.
-   <br></br>
-4. I only came across this problem a single time early on while I was building my project,
-   but just in case: if the vaadin UI does not populate the tables with
-   Client data, stop the program, drop database tables, Maven clean +
-   package rebuild, then run again.
+WINDOWS:
+1. Download Derby 10.6.1 [HERE](https://db.apache.org/derby/releases/release-10.6.1.0.html)
+2. Extract to *C:\Apache*
+3. Run in terminal: `set DERBY_INSTALL=C:\Apache\db-derby-10.16.1.1-bin`
+4. Run in terminal: `set CLASSPATH=%DERBY_INSTALL%\lib\derby.jar;%DERBY_INSTALL%\lib\derbytools.jar;%DERBY_INSTALL%\lib\derbyoptionaltools.jar;%DERBY_INSTALL%\lib\derbyshared.jar;.`
+
+***
+### Run Instructions
+
+MAC:
+1. Navigate to */opt/Apache/db-derby-10.16.1.1-bin*
+2. Run in terminal: `/bin/startNetworkServer -p 1528`
+3. Run file from project: */src/main/java/edu.au.cpsc.homework/App.java*
+4. In web browser enter URL "localhost:8080"
+
+WINDOWS:
+1. Navigate to *C:\Apache\db-derby-10.4.1.3-bin\bin*
+2. Run in terminal: `startNetworkServer.bat`
+> **NOTE**
+>
+> Network Server will run on port 1527 by default
+3. Run file from project: */src/main/java/edu.au.cpsc.homework/App.java*
+4. In web browser enter URL "localhost:8080"
